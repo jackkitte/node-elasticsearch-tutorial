@@ -3,7 +3,7 @@
 
   const elasticsearch = require('elasticsearch');
   const esClient = new elasticsearch.Client({
-    host: '127.0.0.1:9200',
+    host: '172.17.30.188:9200',
     log: 'error'
   });
 
@@ -28,10 +28,9 @@
           ],
           should: [
             {
-              match: {
+              match_phrase: {
                 body: {
-                  query: 'Elit nisi fugiat dolore amet',
-                  type: 'phrase'
+                  query: 'Elit nisi fugiat dolore amet'
                 }
               }
             }

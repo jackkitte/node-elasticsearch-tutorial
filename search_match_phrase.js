@@ -3,7 +3,7 @@
 
   const elasticsearch = require('elasticsearch');
   const esClient = new elasticsearch.Client({
-    host: '127.0.0.1:9200',
+    host: '172.17.30.188:9200',
     log: 'error'
   });
 
@@ -18,16 +18,15 @@
       size: 20,
       from: 0,
       query: {
-        match: {
+        match_phrase: {
           title: {
-            query: 'voluptate anim',
-            type: 'phrase'
+            query: 'voluptate anim'
           }
         }
       }
     };
 
-    console.log(`retrieving documents whose title matches phrase '${body.query.match.title.query}' (displaying ${body.size} items at a time)...`);
+    console.log(`retrieving documents whose title matches phrase '${body.query.match_phrase.title.query}' (displaying ${body.size} items at a time)...`);
     search('library', body)
     .then(results => {
       console.log(`found ${results.hits.total} items in ${results.took}ms`);

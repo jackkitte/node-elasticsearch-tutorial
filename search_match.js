@@ -3,7 +3,7 @@
 
   const elasticsearch = require('elasticsearch');
   const esClient = new elasticsearch.Client({
-    host: '127.0.0.1:9200',
+    host: '172.17.30.188:9200',
     log: 'error'
   });
 
@@ -20,9 +20,9 @@
       query: {
         match: {
           title: {
-            query: 'Quist partiatur',
-            minimum_should_match: 3,
-            fuzziness: 2
+            query: 'Adipisicing pariatur quis',
+            minimum_should_match: 3//,
+            //fuzziness: 2
           }
         }
       }
